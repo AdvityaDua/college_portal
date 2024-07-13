@@ -1,0 +1,31 @@
+{% extends 'login_template.html' %}
+{% block title %}
+Admin Log in
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-title" style="text-align: center">
+                    <h4 style="font-family: Calibri,serif; font-size: 1.75rem; margin-top: 0.25rem">Sign In as an Admin</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <label for="username" class="form-label">User ID</label>
+                        <input type="text" id="username" class="form-control" name="user_id">
+                        <label for="password" class="form-label" style="margin-top: 0.5rem">Password</label>
+                        <input type="password" id="password" class="form-control" name="password">
+                        <div class="text-center">
+                            <button class="btn" style="margin-top: 1.5rem; background-color: #0A2558; color: white;" type="submit">Login</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+{% endblock %}

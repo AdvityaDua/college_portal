@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="../static/css/bootstrap.css">
+  <link rel="stylesheet" href="../static/styles/style.css"/>
+
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+<body>
+<div class="sidebar">
+  <div class="logo-details">
+    <i class="bx bxl-c-plus-plus"></i>
+    <span class="logo_name"><a class="text-white" href="/" style="text-decoration: none">TPC</a></span>
+  </div>
+  <ul class="navigators">
+    <li>
+      <a href="/admin_login">
+        <i class="bx bx-box"></i>
+        <span class="links_name">Admin Login</span>
+      </a>
+    </li>
+    <li>
+      <a href="/mentor_login">
+        <i class="bx bx-box"></i>
+        <span class="links_name">Mentor Login</span>
+      </a>
+    </li>
+    <li>
+      <a href="/student_login">
+        <i class="bx bx-list-ul"></i>
+        <span class="links_name">Student Login</span>
+      </a>
+    </li>
+
+  </ul>
+</div>
+<section class="home-section">
+  <nav>
+    <div class="sidebar-button">
+      <i class="bx bx-menu sidebarBtn"></i>
+      <span class="dashboard">Thapar Polytechnic College Portal</span>
+    </div>
+
+  </nav>
+{%with messages = get_flashed_messages(with_categories=true)%}
+{% if messages %}
+{%for category, message in messages%}
+<div class="alert alert-{{category}} alert-dismissible" role="alert">
+    {{ message}}
+    <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{%endfor%}
+{% endif %}
+{% endwith %}
+  <div class="home-content">
+    {% block content %}
+    {% endblock %}
+  </div>
+</section>
+
+<script>
+  let sidebar = document.querySelector(".sidebar");
+  let sidebarBtn = document.querySelector(".sidebarBtn");
+  sidebarBtn.onclick = function () {
+    sidebar.classList.toggle("active");
+    if (sidebar.classList.contains("active")) {
+      sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+    } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+  };
+</script>
+</body>
+</html>

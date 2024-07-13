@@ -1,0 +1,23 @@
+{% extends 'mentor/mentor_template.html' %}
+
+{% block title %}
+Select a Class
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 style="text-align: center; margin-bottom: 3rem">Review Attendance Records</h1>
+    <h2 style="text-align: center; margin-bottom: 3rem">Select a Class</h2>
+    <form method="post">
+        <div class="text-center">
+            <label for="class" class="form-label">Select a Class</label>
+            <select id="class" name="class" class="form-select">
+                {% for i in data %}
+                <option>{{i}}</option>
+                {% endfor %}
+            </select>
+            <button class="btn" style="margin-top: 1.5rem; background-color: #0A2558; color: white;" type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends 'admin_template.html' %}
+
+{% block title %}Feedback Questions{% endblock %}
+{% block content %}
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    display: grid;
+    margin: auto;
+    justify-content: center;
+    width: 50%;
+    height: fit-content;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+</style>
+<div class="container">
+  <h2 style="margin-bottom: 20px">Feedback Question Addition Form</h2>
+  <form method="post">
+    <div class="form-group">
+      <label for="name">Problem Name</label>
+      <input type="text" id="name" name="problem_name" required>
+    </div>
+    <div class="form-group">
+      <label for="mobile">Problem Description</label>
+      <input type="tel" id="mobile" name="problem_description" required>
+    </div>
+    <button type="submit">Add this Statement</button>
+  </form>
+  <div style="margin-top: 50px">
+    <table>
+                <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                {%for item in data%}
+                <tr>
+                  <td>{{item[0]}}</td>
+                  <td>{{item[1]}}</td>
+                </tr>
+                {%endfor%}
+                </tbody>
+              </table>
+  </div>
+</div>
+{% endblock %}

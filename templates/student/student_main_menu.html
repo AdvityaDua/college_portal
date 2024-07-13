@@ -1,0 +1,64 @@
+{% extends 'student/student_template.html' %}
+{% block title %}Main Menu{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="text-center">
+            <h1 style="text-align: center; font-family: Calibri, sans-serif; margin-bottom: 3rem">Welcome, {{current_user.name}}</h1>
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-title">
+                    <h4 style="text-align: center; font-family: Calibri, sans-serif; margin-top: 0.75rem">List of Teachers</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-light table-hover">
+                        <thead>
+                        <tr>
+                            <td>Name of the Teacher</td>
+                            <td>Subject Taken</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in data %}
+                        <tr>
+                            <td>{{i[0]}}</td>
+                            <td>{{i[1]}}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-title">
+                    <h4 class="text-center" style="text-align: center; font-family: Calibri,sans-serif; margin-top: 0.75rem">Attendance Records</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-light table-hover">
+                        <thead>
+                        <tr>
+                            <td style="text-align: center">Subject</td>
+                            <td style="text-align: center">Percentage</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in a_p %}
+                        <tr>
+                            <td>{{i[0]}}</td>
+                            <td>{{i[1]}}%</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+</div>
+{% endblock %}

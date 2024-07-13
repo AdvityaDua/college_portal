@@ -1,0 +1,51 @@
+{% extends 'mentor/mentor_template.html' %}
+
+{% block title %}
+Select a Class
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <h1 style="text-align: center; margin-bottom: 3rem">Record Attendance</h1>
+    <form method="post">
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <label for="subject" class="form-label">Select a Subject</label>
+                <select id="subject" name="subject" class="form-select">
+                    {% for i in subjects %}
+                    <option value="{{i}}">{{i}}</option>
+                    {% endfor %}
+                </select>
+                <label for="date" class="form-label">Select a Date</label>
+                <input id="date" type="date" class="form-control" name="date" value="{{date}}">
+            </div>
+            <div class="col-lg-4"></div>
+            <table class="table table-light table-hover" style="margin-top: 1.5rem; table-layout: fixed">
+                <thead>
+                <tr>
+                    <td class="text-center">Name of the student</td>
+                    <td class="text-center">Roll No.</td>
+                    <td class="text-center">Status</td>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in range(0, length) %}
+                <tr>
+                    <td valign="middle">{{students[i][0]}}</td>
+                    <td valign="middle">{{students[i][1]}}</td>
+                    <td valign="middle"><select id="status" name="status_{{i}}" class="form-select">
+                        <option value="Present">Present</option>
+                        <option value="Absent">Absent</option>
+                    </select></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="text-center">
+                <button class="btn" style="margin-top: 1.5rem; background-color: #0A2558; color: white;" type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'student/student_template.html' %}
+{% block title %}Main Menu{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="text-center">
+            <h1 style="text-align: center; font-family: Calibri, sans-serif; margin-bottom: 3rem"> Detailed Attendance Records</h1>
+        </div>
+        {% for i in ls %}
+        <div style="border-bottom: dashed; border-width: medium; margin-bottom: 3rem">
+            <p>Subject Name: {{i[0]}}</p>
+            <p>Total Number of Classes Attended: {{i[1]}}</p>
+            <p>Total Number of Classes: {{i[2]}}</p>
+            <p>Attendance Percentage: {{i[3]}}</p>
+            {% if i[4] != 'None' %}
+            <div class="row" style="margin-top: 3rem; margin-bottom: 3rem">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6">
+                    <table class="table table-light table-hover">
+                        <thead>
+                        <tr>
+                            <td class="text-center">Date</td>
+                            <td class="text-center">Status</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for j in i[4] %}
+                        <tr>
+                            <td>{{j[0]}}</td>
+                            <td>{{j[1]}}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+            {% else %}
+            <h5 class="text-center" style="margin-top: 3rem; margin-bottom: 3rem">No results Found</h5>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
